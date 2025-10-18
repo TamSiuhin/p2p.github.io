@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Aligning Large Language Models with Implicit Preferences from User-Generated Content.">
+  <meta name="keywords" content="LLM Alignment, User-Generated Content, Large Language Models, User Preferences">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aligning Large Language Models with Implicit Preferences from User-Generated Content</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/nd.gif">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Aligning Large Language Models with Implicit Preferences from User-Generated Content</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://zhaoxuan.info/">Zhaoxuan Tan</a><sup>1†</sup>,</span>
+            <span class="author-block">
+              <a href="https://hsqmlzno1.github.io/">Zheng Li</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=dw5f9yIAAAAJ&hl=en">Tianyi Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Mskv4ugAAAAJ&hl=en">Haodong Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://bikestra.github.io/">Hyokun Yun</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=QXiEicQAAAAJ&hl=en">Ming Zeng</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=9sOFHvcAAAAJ&hl=en">Pei Chen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=7dcunDUAAAAJ&hl=zh-CN&authuser=1">Zhihan Zhang</a><sup>1†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yifan-gao.github.io/">Yifan Gao</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=S1TuNNIAAAAJ&hl=en">Ruijie Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Priyanka Nigam<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=qSOxydEAAAAJ&hl=en">Bing Yin</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.meng-jiang.com/">Meng Jiang</a><sup>1,2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Notre Dame,</span>
+            <span class="author-block"><sup>2</sup>Amazon.com Inc.</span><br>
+            <span class="author-block"><span style="color: #38b000; font-weight: bold;">ACL 2025 Main Conference</span><br>
+            <span class="author-block"><sup>†</sup>Work done while as an intern at Amazon</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.04463"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper (arXiv)</span>
+                </a>
+              </span>
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://aclanthology.org/2025.acl-long.384/"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper (ACL)</span>
+                  </a>
+                </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/Zhaoxuan/PUGC-Mistral-DPO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <img src="./static/images/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 1.5em; height: 1.5em; vertical-align: middle;">
+                  </span>
+                  <span>Model</span>
+                  </a>
+              </span>
+              <!-- Code Link. -->
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/Zhaoxuan/PUGC_data"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <img src="./static/images/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 1.5em; height: 1.5em; vertical-align: middle;">
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Learning from preference feedback is essential for aligning large language models (LLMs) with human values and improving the quality of generated responses. 
+            However, existing preference learning methods rely heavily on curated data from humans or advanced LLMs, which is costly and difficult to scale. 
+            In this work, we present PUGC, a novel framework that leverages implicit human Preferences in unlabeled User-Generated Content (UGC) to generate preference data. 
+            Although UGC is not explicitly created to guide LLMs in generating human-preferred responses, it often reflects valuable insights and implicit preferences from its creators that has the potential to address readers' questions. 
+            PUGC transforms UGC into user queries and generates responses from the policy model. 
+            The UGC is then leveraged as a reference text for response scoring, aligning the model with these implicit preferences. 
+            This approach improves the quality of preference data while enabling scalable, domain-specific alignment. 
+            Experimental results on Alpaca Eval 2 show that models trained with DPO and PUGC achieve a 9.37% performance improvement over traditional methods, setting a 35.93% state-of-the-art length-controlled win rate using Mistral-7B-Instruct. 
+            Further studies highlight gains in reward quality, domain-specific alignment effectiveness, robustness against UGC quality, and theory of mind capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <!-- Motivation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Motivation</h2>
+
+        <!-- Teaser Image -->
+        <div class="columns is-centered">
+          <div class="column is-three-fifths">
+            <div class="item">
+              <img src="./static/images/teaser.png" alt="PUGC motivation illustration showing how user-generated content contains implicit preferences"/>
+              <h2 class="subtitle has-text-centered">
+                Illustration of how user-generated content contains implicit human preferences that can be leveraged for language model alignment.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Despite the success of methods like RLHF and DPO in aligning large language models with human preferences, their reliance on costly and hard-to-scale preference data presents a major limitation. Human-annotated comparisons and GPT-4-generated feedback are expensive and often domain-general, limiting applicability in specific settings. Meanwhile, large-scale unlabeled text on the internet remains underutilized for preference supervision. Among these, user-generated content (UGC) stands out as a rich and naturally occurring source of implicit human preferences, reflecting the author's opinions, experiences, and intent to address readers' informational needs. This motivates our work: to explore whether UGC can be systematically transformed into high-quality preference data, enabling effective and scalable alignment of LLMs without relying on explicit human or model-generated annotations.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!--/ Motivation. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Preference Alignment Using UGC. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Preference Alignment Using User-Generated Content</h2>
+        
+        <!-- Method Figure -->
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="item">
+              <img src="./static/images/overview.png" alt="PUGC framework illustration showing the three-stage process of converting UGC to preference data"/>
+              <h2 class="subtitle has-text-centered">
+                Unlike traditional preference data generation methods, PUGC sources preference data from user-generated content (UGC) by transforming UGC into reader questions and using UGC as a reference for preferred answers. PUGC leverages implicit user preference signals to align LLMs.              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Our proposed method, PUGC, leverages implicit user preferences embedded within user-generated content (UGC) to construct high-quality preference data without explicit human annotations. Unlike traditional preference data generation methods, which rely on pre-collected instructions and explicit feedback from reward models, PUGC transforms UGC into reader questions, filters instructions for relevance, and then directly utilizes the UGC as a reference to capture implicit preferences. This allows for scalable, flexible alignment across domains by reducing reliance on human-generated instructions, making it a practical and efficient alternative for generating large-scale, high-quality preference data.          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Preference Alignment Using UGC. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Main Experimental Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Main Experiment Results</h2>
+        
+        <!-- Results Figure -->
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="item">
+              <img src="./static/images/main_results.png" alt="Main experimental results showing PUGC performance across different benchmarks and models"/>
+              <h2 class="subtitle has-text-centered">
+                Performance comparison of PUGC against baseline methods across various evaluation benchmarks, demonstrating consistent improvements in alignment quality.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Models trained using PUGC consistently outperform those trained on UltraFeedback preference data, demonstrating clear improvements in win rates on both Alpaca Eval 2.0 and MT-Bench benchmarks. Notably, combining PUGC with the DPO objective generally achieves the best performance, underscoring the effectiveness of this optimization approach in aligning LLMs with implicit user preferences from UGC. Additionally, the instruct setting significantly boosts performance compared to the base setting, indicating that higher-quality instruction data contributes positively to preference alignment. Although PUGC leads to shorter responses, it successfully mitigates length bias and achieves better alignment quality overall.          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Main Experimental Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Additional Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Additional Analysis</h2>
+        
+        <!-- First Row of Subsections -->
+        <div class="columns">
+          <div class="column is-half">
+            <h3 class="title is-5">UGC as References Improves Reward Quality</h3>
+            <div class="item">
+              <img src="./static/images/judge_agreement.png" alt="Ablation study results showing the contribution of different PUGC components"/>
+              <p class="content has-text-justified">
+                Incorporating UGC as reference text enhances reward model agreement with GPT-4, demonstrating its value in providing implicit preference signals for reward evaluation.              </p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <h3 class="title is-5">UGC Quality v.s. Quantity</h3>
+            <div class="item">
+              <img src="./static/images/quality_quantity.png" alt="Performance scaling with different amounts of UGC data"/>
+              <p class="content has-text-justified">
+                Our results indicate that increasing the quantity of UGC significantly boosts alignment performance, while variations in UGC quality have a relatively minor impact.              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row of Subsections -->
+        <div class="columns">
+          <div class="column is-half">
+            <h3 class="title is-5">Domain-Specific UGC Alignment</h3>
+            <div class="item">
+              <img src="./static/images/domain_specific_align.png" alt="Cross-domain evaluation results showing PUGC's generalization capabilities"/>
+              <p class="content has-text-justified">
+                By leveraging domain-specific UGC, PUGC achieves superior performance in targeted alignment tasks compared to general-domain and other baselines.              </p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <h3 class="title is-5">PUGC Improves Theory of Mind Capabilities</h3>
+            <div class="item">
+              <img src="./static/images/theory_of_mind.png" alt="Human evaluation results comparing PUGC with baseline methods"/>
+              <p class="content has-text-justified">
+                Utilizing implicit preferences in UGC notably enhances the model’s theory-of-mind capabilities, enabling it to better understand user intentions, beliefs, and emotions.              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Additional Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Online Iterative Training Can Further Improve Alignment Performance</h2>
+        
+        <div class="item">
+          <img src="./static/images/online_iterative.png" alt="Results showing performance improvements with online iterative training" style="max-width: 70%;"/>
+          <p class="content has-text-justified">
+            While our main experiments focus on offline training, online iterative RLHF has demonstrated stronger performance. We evaluate PUGC in an online iterative setting by splitting UGC data into three subsets for sequential training iterations. Each iteration yields steady improvements in LC win rates (13.74%, 3.22%, and 3.44% respectively), achieving a 37.51% win rate by the third iteration compared to 35.93% in the offline setting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{tan-etal-2025-aligning,
+      title = "Aligning Large Language Models with Implicit Preferences from User-Generated Content",
+      author = "Tan, Zhaoxuan  and
+        Li, Zheng  and
+        Liu, Tianyi  and
+        Wang, Haodong  and
+        Yun, Hyokun  and
+        Zeng, Ming  and
+        Chen, Pei  and
+        Zhang, Zhihan  and
+        Gao, Yifan  and
+        Wang, Ruijie  and
+        Nigam, Priyanka  and
+        Yin, Bing  and
+        Jiang, Meng",
+      editor = "Che, Wanxiang  and
+        Nabende, Joyce  and
+        Shutova, Ekaterina  and
+        Pilehvar, Mohammad Taher",
+      booktitle = "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+      month = jul,
+      year = "2025",
+      address = "Vienna, Austria",
+      publisher = "Association for Computational Linguistics",
+      url = "https://aclanthology.org/2025.acl-long.384/",
+      doi = "10.18653/v1/2025.acl-long.384",
+      pages = "7792--7820",
+      ISBN = "979-8-89176-251-0",
+      abstract = "Learning from preference feedback is essential for aligning large language models (LLMs) with human values and improving the quality of generated responses. However, existing preference learning methods rely heavily on curated data from humans or advanced LLMs, which is costly and difficult to scale. In this work, we present PUGC, a novel framework that leverages implicit human Preferences in unlabeled User-Generated Content (UGC) to generate preference data. Although UGC is not explicitly created to guide LLMs in generating human-preferred responses, it often reflects valuable insights and implicit preferences from its creators that has the potential to address readers' questions. PUGC transforms UGC into user queries and generates responses from the policy model. The UGC is then leveraged as a reference text for response scoring, aligning the model with these implicit preferences. This approach improves the quality of preference data while enabling scalable, domain-specific alignment. Experimental results on Alpaca Eval 2 show that models trained with DPO and PUGC achieve a 9.37{\%} performance improvement over traditional methods, setting a 35.93{\%} state-of-the-art length-controlled win rate using Mistral-7B-Instruct. Further studies highlight gains in reward quality, domain-specific alignment effectiveness, robustness against UGC quality, and theory of mind capabilities. Our code and dataset are available at https://zhaoxuan.info/PUGC.github.io/."
+  }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
